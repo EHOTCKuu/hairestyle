@@ -1,0 +1,119 @@
+@function scale($px) {
+  @return calc(#{$px} / 1920 * 100vw);
+}
+
+.wheelWrapper {
+  position: fixed;
+  left: scale(-590);
+  top: 50%;
+  width: scale(706);
+  height: scale(706);
+  transform: translateY(-50%);
+  z-index: 20;
+  pointer-events: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #625b56;
+    box-shadow:
+      inset scale(4) scale(6) scale(5) rgba(0, 0, 0, 0.45),
+      inset scale(-2) scale(-2) scale(4) rgba(255, 255, 255, 0.08);
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      transparent calc(100% - #{scale(11)}),
+      #000 calc(100% - #{scale(11)})
+    );
+    mask: radial-gradient(
+      farthest-side,
+      transparent calc(100% - #{scale(11)}),
+      #000 calc(100% - #{scale(11)})
+    );
+  }
+}
+
+.orbitCircle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transition: transform 0.6s ease-out;
+}
+
+.orbitItem {
+  position: absolute;
+  top: 50%;
+  right: scale(5.5);
+  width: 0;
+  height: 0;
+  transform-origin: scale(-347.5) 0;
+  pointer-events: auto;
+  transition: opacity 0.35s ease;
+}
+
+.hiddenItem {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.itemButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  margin-top: scale(-60);
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  transform-origin: 0 scale(60);
+  transition: transform 0.5s ease-out, margin-top 0.3s ease;
+  text-align: left;
+
+  &.active {
+    margin-top: scale(-75);
+    transform-origin: 0 scale(75);
+  }
+}
+
+.iconImage {
+  width: scale(120);
+  height: scale(120);
+  margin-left: scale(-48);
+  flex-shrink: 0;
+  object-fit: contain;
+  transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease;
+
+  .active & {
+    width: scale(150);
+    height: scale(150);
+    margin-left: scale(-60);
+  }
+}
+
+.itemLabel {
+  margin-left: scale(-22);
+  margin-top: scale(-16);
+  color: #fff;
+  font-size: scale(26);
+  font-weight: 600;
+  line-height: 1.19;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  white-space: pre-line;
+  animation: fadeSlide 0.4s ease forwards;
+  min-width: scale(188);
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(scale(-8));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

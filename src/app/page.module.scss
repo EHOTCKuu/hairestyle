@@ -1,0 +1,23 @@
+.main {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.desktopView {
+  display: block;
+}
+
+.mobileView {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .desktopView {
+    display: none;
+  }
+
+  .mobileView {
+    display: block;
+  }
+}

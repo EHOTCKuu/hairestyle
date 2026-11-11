@@ -1,5 +1,5 @@
 {
-  "name": "styler-slider",
+  "name": "cd hairstyler",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -19,6 +19,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+    "sass": "^1.108.2",
     "typescript": "^5"
   }
 }
